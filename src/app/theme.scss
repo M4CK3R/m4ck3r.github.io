@@ -1,0 +1,28 @@
+$text: hsl(280, 6%, 90%);
+$text-secondary: hsl(280, 6%, 80%);
+$text-highlight: hsl(280, 90%, 90%);
+$background: #070109;
+$background-secondary: #000000;
+$primary: #730096;
+$secondary: #200c27;
+$accent: #a23bc4;
+$stars-color: hsl(280, 20%, 80%);
+$stars-background: hsl(285, 80%, 1%);
+
+$theme-map-dark:(
+    text: $text,
+    text-secondary: $text-secondary,
+    text-highlight: $text-highlight,
+    background: $background,
+    background-secondary: $background-secondary,
+    primary: $primary,
+    secondary: $secondary,
+    accent: $accent,
+    stars-color: $stars-color,
+    stars-background: $stars-background
+);
+@mixin spread-map($map: ()) {
+    @each $key,$value in $map {
+        #{"--"+$key}: $value;
+    }
+  }

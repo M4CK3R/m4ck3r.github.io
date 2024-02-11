@@ -1,0 +1,47 @@
+@import "theme";
+
+$margin: 0rem;
+$width: calc(100vw - #{$margin * 2});
+$height: calc(100vh - #{$margin * 2});
+$padding: 2rem;
+.background {
+  background-color: $background-secondary;
+  color: $text-secondary;
+  position: fixed;
+  width: $width;
+  height: $height;
+  // margin: $margin;
+  min-width: $padding * 2;
+  min-height: $padding * 2;
+  --stars-color: var(--text-secondary);
+  --stars-background: var(--background-secondary);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+  width: $width;
+  height: $height;
+  position: relative;
+  // margin: $margin;
+  background-color: transparent;
+  color: $text;
+
+  border: 0.1rem solid $secondary;
+  padding: $padding;
+
+  .title {
+    color: $text;
+    font-size: 4rem;
+    font-weight: bold;
+  }
+
+  .content{
+    flex: 1;
+    display: flex;
+    justify-content: stretch;
+    align-items: stretch;
+    overflow: auto;
+  }
+}

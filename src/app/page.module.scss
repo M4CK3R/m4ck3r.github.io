@@ -1,0 +1,35 @@
+@import "theme.scss";
+
+.description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: max-content;
+  min-height: 100%;
+  overflow: visible;
+  gap: 1em;
+  padding: 1em;
+
+  p {
+    width: 75%;
+    text-align: justify;
+    font-size: 1.5em;
+    color: $text;
+  }
+}
+
+.highlight {
+  color: $text-highlight;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+@media (max-width: 800px) {
+  .description {
+    p {
+      width: 100%;
+      font-size: 1.2em;
+    }
+  }
+}

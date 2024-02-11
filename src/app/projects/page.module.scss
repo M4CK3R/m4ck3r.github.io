@@ -1,0 +1,156 @@
+@import "../theme.scss";
+
+$transition-duration: 0.5s;
+$icon-size: 4rem;
+
+.project {
+  backdrop-filter: blur(0.1rem);
+  border-radius: 2em;
+  border-width: 0.1rem;
+  border-color: $text;
+  border-style: solid;
+  display: grid;
+  grid-template-columns: 1fr;
+  min-height: max(35em, 100%);
+
+  &:hover {
+    .projectIcon {
+      width: calc($icon-size + 0.5rem);
+      height: calc($icon-size + 0.5rem);
+      transition: width $transition-duration, height $transition-duration;
+    }
+  }
+
+  .projectIcon {
+    width: $icon-size;
+    height: $icon-size;
+    position: relative;
+    color: $text;
+    border-radius: 2em;
+    justify-self: center;
+    align-self: center;
+    transition: width $transition-duration, height $transition-duration;
+  }
+
+  .projectName {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+
+    & > * > *:not(:last-child) {
+      padding-right: 0.5rem;
+    }
+  }
+
+  .projectDescription {
+    overflow: hidden;
+    text-align: justify;
+    white-space: pre-wrap;
+  }
+}
+
+@media (min-width: 500px) {
+  .projectsContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    padding: 2em;
+    gap: 1em;
+  }
+
+  .project {
+    min-width: calc($icon-size + 4em);
+    flex: 1;
+    width: 10rem;
+    grid-template-rows: 1fr 0fr 0fr;
+    transition-property: width, min-width, flex, grid-template-rows;
+    transition-duration: $transition-duration;
+    transition-timing-function: ease-in-out;
+    padding: 2em;
+
+    overflow: hidden;
+
+    * a {
+      color: $text;
+      text-decoration: none;
+      & > * {
+        pointer-events: none;
+      }
+    }
+
+    $timing-function: cubic-bezier(0, 1, 1, 1);
+    $timing-function-reverse: cubic-bezier(1, 0, 1, 1);
+    $transition-duration-extended: $transition-duration * 2;
+    $transition-duration-extended-reverse: $transition-duration/2;
+
+    .projectName {
+      visibility: collapse;
+      opacity: 0;
+      transition-property: visibility, opacity;
+      transition-duration: $transition-duration,
+        $transition-duration-extended-reverse;
+      transition-timing-function: ease-in-out, $timing-function;
+      overflow: hidden;
+    }
+
+    .projectDescription {
+      visibility: collapse;
+      opacity: 0;
+      transition-property: visibility, opacity;
+      transition-duration: $transition-duration,
+        $transition-duration-extended-reverse;
+      transition-timing-function: ease-in-out, $timing-function;
+    }
+
+    &.active {
+      flex: 10;
+      width: auto;
+      min-width: 20rem;
+      grid-template-rows: 1fr 0.5fr 3fr;
+      transition-property: width, min-width, flex, grid-template-rows;
+      transition-duration: $transition-duration;
+      transition-timing-function: ease-in-out;
+
+      .projectIcon {
+        width: 4rem;
+        height: 4rem;
+        padding: 1em;
+      }
+
+      .projectName {
+        visibility: visible;
+        opacity: 1;
+        transition-property: visibility, opacity;
+        transition-duration: $transition-duration, $transition-duration-extended;
+        transition-timing-function: ease-in-out, $timing-function-reverse;
+      }
+
+      .projectDescription {
+        visibility: visible;
+        opacity: 1;
+        transition-property: visibility, opacity;
+        transition-duration: $transition-duration, $transition-duration-extended;
+        transition-timing-function: ease-in-out, $timing-function-reverse;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .projectsContainer {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    gap: 1em;
+    height: 100%;
+  }
+
+  .project {
+    padding: 1em;
+    min-height: auto;
+  }
+}
